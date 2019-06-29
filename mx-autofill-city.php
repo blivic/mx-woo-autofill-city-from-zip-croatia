@@ -7,7 +7,7 @@ Version: 1.0
 Author: Media X
 WC requires at least: 2.6
 WC tested up to: 3.5.4
-Author URI: http://media-x.hr
+Author URI: https://media-x.hr
 License: GPLv3
 */
 
