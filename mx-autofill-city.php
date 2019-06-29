@@ -2,11 +2,11 @@
 /*
 Plugin Name: MX Autofill city from ZIP
 Plugin URI: http://media-x.hr
-Description: Refresh cart on qty change via ajax 
+Description: Autofill "City" field from entered ZIP#
 Version: 1.0
 Author: Media X
 WC requires at least: 2.6
-WC tested up to: 3.5
+WC tested up to: 3.5.4
 Author URI: http://media-x.hr
 License: GPLv3
 */
@@ -38,8 +38,8 @@ function mx_edit_default_address_fields($fields) {
    return $fields;
 }
 
-add_filter( 'woocommerce_checkout_fields' , 'custom_checkout_billing_fields', 20, 1 );
-function custom_checkout_billing_fields( $fields ){
+add_filter( 'woocommerce_checkout_fields' , 'mx_organize_checkout_billing_fields', 20, 1 );
+function mx_organize_checkout_billing_fields( $fields ){
        // Move email field under first & last name
 	   $fields['billing']['billing_email']['priority'] = 30;
         // Change class
@@ -61,9 +61,3 @@ add_filter( 'woocommerce_get_country_locale', function( $locale ) {
 
     return $locale;
 } );
-add_filter( 'woocommerce_checkout_fields', 'misha_email_first' );
- 
-function misha_email_first( $checkout_fields ) {
-	$checkout_fields['billing']['billing_email']['priority'] = 4;
-	return $checkout_fields;
-}
